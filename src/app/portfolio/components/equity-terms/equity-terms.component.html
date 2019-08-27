@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <div class="jumbotron">
+    <h1>Equity-Terms - Component -- {{ isChildDeleted }}</h1>
+    <div *ngFor="let item of terms">
+      <smc-equity-long-term
+        [equityType]="item"        
+      ></smc-equity-long-term>
+      <!-- <smc-equity-short-term></smc-equity-short-term> -->
+    </div>
+  </div>
+</div>
