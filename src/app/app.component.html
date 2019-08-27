@@ -1,0 +1,25 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <div>
+    <div>
+      <button (click)="onGet()">Get</button>
+    </div>
+    <div>
+      <button (click)="onPost()">Post</button>
+    </div>
+    <div>
+      <button (click)="onUpdate()">Update</button>
+    </div>
+    <div>
+      <button (click)="onDelete()">Delete</button>
+    </div>
+  </div>
+  <span>{{result|json}}</span>
+</div>
+<router-outlet></router-outlet>
