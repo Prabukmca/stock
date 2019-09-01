@@ -16,7 +16,6 @@ export class EquityComponent implements OnInit {
     );
   }
 
-  
   onDeleted($event) {
     if ($event) {
       this.isChildDeleted = $event;

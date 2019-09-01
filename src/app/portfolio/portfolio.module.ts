@@ -9,14 +9,17 @@ import { EquityLongTermComponent } from './components/equity-long-term/equity-lo
 import { EquityShortTermComponent } from './components/equity-short-term/equity-short-term.component';
 import { PortfolioComponent } from './portfolio.component';
 import { EquityTermsComponent } from './components/equity-terms/equity-terms.component';
+import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.component';
+import { DataManagerModule } from '../data-manager/data-manager.module';
 
 
 @NgModule({
-  declarations: [StockComponent, EquityComponent, EquityLongTermComponent, EquityShortTermComponent, PortfolioComponent, EquityTermsComponent],
+  declarations: [StockComponent, EquityComponent, EquityLongTermComponent, EquityShortTermComponent, PortfolioComponent, EquityTermsComponent, DragAndDropComponent],
   imports: [
     BrowserModule,
     CommonModule,
     PortfolioRoutingModule,
+    DataManagerModule,
   ],
   providers: [],
   bootstrap: [PortfolioComponent]

@@ -17,11 +17,11 @@ export const ACTIONS = {
 
 export function freelancersReducers(state: Array<IFreelancer> = [], action: Action): Array<IFreelancer> {
     switch (action.type) {
-        case ACTIONS.FREELANCERS_LOADED:
-            return Array.prototype.concat(action.payload);
-        case ACTIONS.DELETE_FREELANCER:
-            state.splice(state.indexOf(action.payload), 1);
-            return Array.prototype.concat(state);
+        // case ACTIONS.FREELANCERS_LOADED:
+        //     return Array.prototype.concat(action.payload);
+        // case ACTIONS.DELETE_FREELANCER:
+        //     state.splice(state.indexOf(action.payload), 1);
+        //     return Array.prototype.concat(state);
         default:
             return state;
     }
