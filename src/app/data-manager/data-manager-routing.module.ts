@@ -3,19 +3,21 @@ import { Routes, RouterModule } from "@angular/router";
 import { DataManagerComponent } from "./data-manager/data-manager.component";
 import { DataExplorerComponent } from "./data-explorer/data-explorer.component";
 
+import { DataManagerDetailsComponent } from "./data-manager-details/data-manager-details.component";
+
 const routes: Routes = [
   {
-    path:'',
+    path: "",
     component: DataManagerComponent,
     children: [
       {
-        path: '',
+        path: "",
         redirectTo: "dataexplorer",
-        pathMatch: 'full'
+        pathMatch: "full"
       },
       {
-        path:'dataexplorer',
-        component:DataExplorerComponent
+        path: "dataexplorer",
+        component: DataExplorerComponent
       }
     ]
   }
@@ -25,4 +27,10 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DataManagerRoutingModule {}
+export class DataManagerRoutingModule {
+  static components = [
+    DataManagerComponent,
+    DataExplorerComponent,
+    DataManagerDetailsComponent
+  ];
+}

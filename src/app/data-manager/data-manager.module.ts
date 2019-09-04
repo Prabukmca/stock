@@ -1,17 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { MatTabsModule } from "@angular/material";
 
-import { DataManagerRoutingModule } from './data-manager-routing.module';
-import { DataExplorerComponent } from './data-explorer/data-explorer.component';
-import { DataManagerDetailsComponent } from './data-manager-details/data-manager-details.component';
-import { DataManagerComponent } from './data-manager/data-manager.component';
-
+import { DataManagerRoutingModule } from "./data-manager-routing.module";
 
 @NgModule({
-  declarations: [DataExplorerComponent, DataManagerDetailsComponent, DataManagerComponent],
-  imports: [
-    CommonModule,
-    DataManagerRoutingModule
-  ]
+  declarations: [DataManagerRoutingModule.components],
+  imports: [CommonModule, DataManagerRoutingModule, MatTabsModule]
 })
-export class DataManagerModule { }
+export class DataManagerModule {}
