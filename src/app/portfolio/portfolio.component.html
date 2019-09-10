@@ -11,10 +11,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav">
-        <a href="#" class="nav-item nav-link active">Home</a>
-        <a href="#" class="nav-item nav-link">Services</a>
-        <a href="#" class="nav-item nav-link">About</a>
-        <a href="#" class="nav-item nav-link">Contact</a>
+        <a href="#" class="nav-item nav-link active">Home</a>        
         <a
           [routerLink]="['/draganddrop']"
           class="nav-item nav-link"
@@ -27,6 +24,12 @@
           routerLinkActive="router-link-active"
           >Data Manager</a
         >
+        <a
+        [routerLink]="['/hottabledemo']"
+        class="nav-item nav-link"
+        routerLinkActive="router-link-active"
+        >Hot Table</a
+      >
       </div>
       <div class="navbar-nav ml-auto">
         <a href="#" class="nav-item nav-link">Register</a>

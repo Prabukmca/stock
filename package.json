@@ -21,6 +21,8 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
+    "@handsontable/angular": "^5.1.0",
+    "handsontable": "^7.1.1",
     "ngrx": "^2.0.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

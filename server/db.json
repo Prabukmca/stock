@@ -62,5 +62,79 @@
       "TaxSavingsId": 2,
       "EquityId": 3
     }
+  ],
+  "hottable-dataset": [
+    {
+      "id": 1,
+      "name": "Ted Right",
+      "address": "Wall Street"
+    },
+    {
+      "id": 2,
+      "name": "Frank Honest",
+      "address": "Pennsylvania Avenue"
+    },
+    {
+      "id": 3,
+      "name": "Joan Well",
+      "address": "Broadway"
+    },
+    {
+      "id": 4,
+      "name": "Gail Polite",
+      "address": "Bourbon Street"
+    },
+    {
+      "id": 5,
+      "name": "Michael Fair",
+      "address": "Lombard Street"
+    },
+    {
+      "id": 6,
+      "name": "Mia Fair",
+      "address": "Rodeo Drive"
+    },
+    {
+      "id": 7,
+      "name": "Cora Fair",
+      "address": "Sunset Boulevard"
+    },
+    {
+      "id": 8,
+      "name": "Jack Right",
+      "address": "Michigan Avenue"
+    }
+  ],
+  "dataObject": [
+    {
+      "id": 1,
+      "flag": "EUR",
+      "currencyCode": "EUR",
+      "currency": "Euro",
+      "level": 0.9033,
+      "units": "EUR / USD",
+      "asOf": "08/19/2019",
+      "onedChng": 0.0026
+    },
+    {
+      "id": 2,
+      "flag": "JPY",
+      "currencyCode": "JPY",
+      "currency": "Japanese Yen",
+      "level": 124.387,
+      "units": "JPY / USD",
+      "asOf": "08/19/2019",
+      "onedChng": 1.0E-4
+    },
+    {
+      "id": 3,
+      "flag": "GBP",
+      "currencyCode": "GBP",
+      "currency": "Pound Sterling",
+      "level": 0.6396,
+      "units": "GBP / USD",
+      "asOf": "08/19/2019",
+      "onedChng": 0
+    }
   ]
 }
