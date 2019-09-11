@@ -1,8 +1,15 @@
-<mat-tab-group>
-  <mat-tab *ngFor="let item of tabs" label="item.name"></mat-tab>
-  <!-- <mat-tab label="Current Year Investments"> </mat-tab>
+<div *ngIf="tabs">
+  {{ tabs | json }}
+  <mat-tab-group>
+    <mat-tab
+      *ngFor="let item of tabs; trackBy: trackByTab(item)"
+      label="{{ item.name }}"
+    ></mat-tab>
+    <!-- <mat-tab label="Current Year Investments"> </mat-tab>
   <mat-tab label="Total Investments"> </mat-tab>
   <mat-tab label="Next 3 Years Investments"> </mat-tab> -->
-</mat-tab-group>
-<button (click)="onAddNewTab()">Add New Tab</button>
-<router-outlet></router-outlet>
+  </mat-tab-group>
+
+  <button (click)="onAddNewTab()">Add New Tab</button>
+  <router-outlet></router-outlet>
+</div>

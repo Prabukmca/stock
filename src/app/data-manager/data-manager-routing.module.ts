@@ -5,6 +5,8 @@ import { DataExplorerComponent } from "./data-explorer/data-explorer.component";
 
 import { DataManagerDetailsComponent } from "./data-manager-details/data-manager-details.component";
 
+import { CanDeactivateGuard } from "../portfolio/can-deactive.guard";
+
 const routes: Routes = [
   {
     path: "",
@@ -17,7 +19,8 @@ const routes: Routes = [
       },
       {
         path: "dataexplorer",
-        component: DataExplorerComponent
+        component: DataExplorerComponent,
+        canDeactivate: [CanDeactivateGuard]
       }
     ]
   }

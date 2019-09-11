@@ -7,16 +7,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class DataManagerComponent implements OnInit {
   tabs = [];
-  
+
   constructor() {}
 
   ngOnInit() {
-   
-  }
-
-  ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
     this.tabs = [
       {
         id: 1,
@@ -31,5 +25,15 @@ export class DataManagerComponent implements OnInit {
         name: "tap3"
       }
     ];
+  }
+
+  ngAfterViewInit(): void {}
+  trackByTab($event) {
+    if ($event) {
+      return $event.id;
+    }
+  }
+  onAddNewTab() {
+    this.tabs.push({ id: 4, name: "tab4" });
   }
 }
