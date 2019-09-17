@@ -4,6 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatTabsModule } from "@angular/material";
 import { HotTableModule } from "@handsontable/angular";
+import { StoreModule} from '@ngrx/store';
 
 import { PortfolioRoutingModule } from "./portfolio-routing.module";
 import { PortfolioComponent } from "./portfolio.component";
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     DataManagerModule,
     MatTabsModule,
     HotTableModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({}),
   ],
   exports: [MatTabsModule],
   providers: [],

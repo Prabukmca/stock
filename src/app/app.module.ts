@@ -4,14 +4,14 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FreelancerGridComponent } from './freelancer-grid/freelancer-grid.component';
 import { PortfolioModule } from './portfolio/portfolio.module';
+import { StrengthPipe } from './shared/pipes/strength.pipe';
 // import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FreelancerGridComponent,
+    StrengthPipe,
     // FilterComponent
   ],
   imports: [

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Store, select } from "@ngrx/store";
 
 @Component({
   selector: "smc-data-manager",
@@ -8,7 +9,7 @@ import { Component, OnInit } from "@angular/core";
 export class DataManagerComponent implements OnInit {
   tabs = [];
 
-  constructor() {}
+  constructor(private store: Store<any>) {}
 
   ngOnInit() {
     this.tabs = [
@@ -25,6 +26,12 @@ export class DataManagerComponent implements OnInit {
         name: "tap3"
       }
     ];
+
+    this.store.pipe(select("dataManagers")).subscribe(dataManagers => {
+      if (dataManagers) {
+        this.tabs.push(dataManagers.tab);
+      }
+    });
   }
 
   ngAfterViewInit(): void {}
@@ -34,6 +41,10 @@ export class DataManagerComponent implements OnInit {
     }
   }
   onAddNewTab() {
-    this.tabs.push({ id: 4, name: "tab4" });
+    // this.tabs.push({ id: 4, name: "tab4" });
+    this.store.dispatch({
+      type: "ADD_TAB",
+      payload: { id: 5, name: "tab5" }
+    });
   }
 }
