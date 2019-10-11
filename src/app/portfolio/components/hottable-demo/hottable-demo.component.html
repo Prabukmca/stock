@@ -1,11 +1,12 @@
-<!-- <hot-table
-      class="hot"
-      [data]="dataset"
-      [colHeaders]="true"
-      [rowHeaders]="true">
-        <hot-column data="id" [readOnly]="true" title="ID"></hot-column>
-        <hot-column data="name" title="Full name"></hot-column>
-        <hot-column data="address" title="Street name"></hot-column>
-    </hot-table> -->
+<script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@handsontable/angular/bundles/handsontable-angular.umd.min.js"></script>
 
-<hot-table [settings]="hotSettings"></hot-table>
+<link href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+<hot-table [data]="data"
+           (after-change)="afterChange($event)"
+           (after-on-cell-mouse-down)="afterOnCellMouseDown($event)"
+           [colHeaders]="colHeaders"
+           [columns]="columns"
+           [options]="options"
+           [colWidths]="colWidths">
+</hot-table>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
+import { DataManagerService } from "../services/data-manager.service";
 
 @Component({
   selector: "smc-data-manager",
@@ -8,29 +9,21 @@ import { Store, select } from "@ngrx/store";
 })
 export class DataManagerComponent implements OnInit {
   tabs = [];
-
-  constructor(private store: Store<any>) {}
+  dataType = "Test Type";
+  constructor(
+    // private store: Store<any>,
+    private dataManagerService: DataManagerService
+  ) {}
 
   ngOnInit() {
-    this.tabs = [
-      {
-        id: 1,
-        name: "tap1"
-      },
-      {
-        id: 1,
-        name: "tap2"
-      },
-      {
-        id: 1,
-        name: "tap3"
-      }
-    ];
-
-    this.store.pipe(select("dataManagers")).subscribe(dataManagers => {
-      if (dataManagers) {
-        this.tabs.push(dataManagers.tab);
-      }
+    this.dataManagerService.getDataTypeValues().subscribe(data => {
+      this.tabs = data;
+      this.keepItInStore("ADD_TAB", data);
+      // this.store.pipe(select("dataManagers")).subscribe(dataManagers => {
+      //   if (dataManagers) {
+      //     this.tabs = [...this.tabs, dataManagers.tab];
+      //   }
+      // });
     });
   }
 
@@ -42,9 +35,14 @@ export class DataManagerComponent implements OnInit {
   }
   onAddNewTab() {
     // this.tabs.push({ id: 4, name: "tab4" });
-    this.store.dispatch({
-      type: "ADD_TAB",
-      payload: { id: 5, name: "tab5" }
-    });
+    const data = { id: 5, name: "tab5" };
+    this.keepItInStore("ADD_TAB", data);
+  }
+
+  private keepItInStore(action: string, data: any) {
+    // this.store.dispatch({
+    //   type: action,
+    //   payload: data
+    // });
   }
 }

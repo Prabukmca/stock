@@ -136,5 +136,19 @@
       "asOf": "08/19/2019",
       "onedChng": 0
     }
+  ],
+  "dataTypes":[
+    {
+      "id": 1,
+      "name": "Tap1"
+    },
+    {
+      "id": 2,
+      "name": "Tap2"
+    },
+    {
+      "id": 3,
+      "name": "Tap3"
+    }
   ]
 }
