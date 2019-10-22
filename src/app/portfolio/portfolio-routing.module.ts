@@ -1,13 +1,14 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { StockComponent } from '../features/components/stock/stock.component';
+import { DragAndDropComponent } from '../features/components/drag-and-drop/drag-and-drop.component';
+import { HottableDemoComponent } from '../features/components/hottable-demo/hottable-demo.component';
+import { EquityComponent } from '../features/components/equity/equity.component';
+import { EquityLongTermComponent } from '../features/components/equity-long-term/equity-long-term.component';
+import { EquityShortTermComponent } from '../features/components/equity-short-term/equity-short-term.component';
+import { EquityTermsComponent } from '../features/components/equity-terms/equity-terms.component';
 
-import { StockComponent } from "./components/stock/stock.component";
-import { EquityComponent } from "./components/equity/equity.component";
-import { EquityLongTermComponent } from "./components/equity-long-term/equity-long-term.component";
-import { EquityShortTermComponent } from "./components/equity-short-term/equity-short-term.component";
-import { EquityTermsComponent } from "./components/equity-terms/equity-terms.component";
-import { DragAndDropComponent } from "./components/drag-and-drop/drag-and-drop.component";
-import { HottableDemoComponent } from "./components/hottable-demo/hottable-demo.component";
+
 
 const routes: Routes = [
   { path: "", redirectTo: "/stock", pathMatch: "full" },
@@ -16,7 +17,7 @@ const routes: Routes = [
   {
     path: "datamanager",
     loadChildren: () =>
-      import("./../data-manager/data-manager.module").then(
+      import("../features/data-manager/data-manager.module").then(
         d => d.DataManagerModule
       )
   },

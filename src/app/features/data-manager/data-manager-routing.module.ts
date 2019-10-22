@@ -5,7 +5,7 @@ import { DataExplorerComponent } from "./data-explorer/data-explorer.component";
 
 import { DataManagerDetailsComponent } from "./data-manager-details/data-manager-details.component";
 
-import { CanDeactivateGuard } from "../portfolio/can-deactive.guard";
+import { CanDeactivateGuard } from "../../portfolio/can-deactive.guard";
 
 const routes: Routes = [
   {

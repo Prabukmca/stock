@@ -9,9 +9,12 @@ import { HotTableModule } from 'ng2-handsontable';
 
 import { PortfolioRoutingModule } from "./portfolio-routing.module";
 import { PortfolioComponent } from "./portfolio.component";
-import { DataManagerModule } from "../data-manager/data-manager.module";
 import { HttpClientModule } from "@angular/common/http";
-import { PortfolioReducer } from "./state/portfolio.reducer";
+import { PortfolioReducer } from "../features/state/portfolio.reducer";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { FormsModule } from '@angular/forms';
+import { DataManagerModule } from '../features/data-manager/data-manager.module';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [PortfolioComponent, PortfolioRoutingModule.components],
@@ -19,14 +22,17 @@ import { PortfolioReducer } from "./state/portfolio.reducer";
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
+    FormsModule,
     PortfolioRoutingModule,
     DataManagerModule,
     MatTabsModule,
     HttpClientModule,
     StoreModule.forRoot({ PortfolioReducer }),
-    HotTableModule
+    HotTableModule,
+    NgbModule,
+    TabsModule.forRoot()
   ],
-  exports: [MatTabsModule],
+  exports: [MatTabsModule, NgbModule],
   providers: [],
   bootstrap: [PortfolioComponent]
 })

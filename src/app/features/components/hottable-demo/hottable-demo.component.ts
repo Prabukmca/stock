@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { PortfolioService } from "../../services/portfolio.service";
+import { PortfolioService } from "../../../features/services/portfolio.service";
 import Handsontable from "handsontable";
 
-import { HottableModel, flagRenderer } from "../../models/hottable.model";
+import { HottableModel, flagRenderer } from "../../../features/models/hottable.model";
 import { getBasicData } from "./hottable-demo.data";
 
 @Component({
@@ -29,7 +29,8 @@ export class HottableDemoComponent  {
     },
     {
       data: "name",
-      type: "text"
+      type: "text",
+      allowEmpty:false
     },
     {
       data: "price",

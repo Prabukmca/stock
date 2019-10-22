@@ -28,8 +28,9 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.scss"              
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -94,6 +95,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -125,6 +127,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "stock-market"
 }

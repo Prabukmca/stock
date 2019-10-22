@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { EquityServiceService } from "../../services/equity-service.service";
+import { EquityServiceService } from "../../../features/services/equity-service.service";
 
 @Component({
   selector: "smc-stock",

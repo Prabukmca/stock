@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="jumbotron">
+      <div class="addNewLayer">
+        <button class="btn btn-lg btn-success col-xs-12" (click)="add()">
+          <span class="glyphicon glyphicon-earphone pull-left"></span> Add Layer
+        </button>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let layer of layers; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              <ngb-highlight [result]="layer.name"></ngb-highlight>
+            </td>
+            <td>
+              <ngb-highlight [result]="layer.type"></ngb-highlight>
+            </td>
+            <td>
+              <ngb-highlight [result]="layer.description"></ngb-highlight>
+            </td>
+            <td>
+              <button
+                class="btn btn-lg btn-success col-xs-12"
+                (click)="delete(layer)"
+              >
+                <span class="glyphicon glyphicon-earphone pull-left"></span>
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="jumbotron">
+      <input type="text" [(ngModel)]="searchLayerId" /> <br />
+      <button class="btn btn-lg btn-success col-xs-12" (click)="getLayer()">
+        <span class="glyphicon glyphicon-earphone pull-left"></span>
+        Get Layer
+      </button>
+      <span style="color: white" > {{ layer | json }}</span>
+    </div>
+  </div>
