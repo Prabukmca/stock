@@ -23,9 +23,7 @@ export class DataExplorerComponent implements OnInit {
     }
     return true;
   }
-
-
-
+  
   disableSwitching: boolean;
   @ViewChild('tabset', {static:false}) tabsetEl: ElementRef;
   @ViewChild('tabset',  {static:false}) tabset: TabsetComponent;

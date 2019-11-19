@@ -5,7 +5,7 @@ import { FormsModule } from "@angular/forms";
 
 import { DataManagerRoutingModule } from "./data-manager-routing.module";
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './data-manager/state/dataManager.reducer';
+import { reducer } from './state/dataManager.reducer';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
