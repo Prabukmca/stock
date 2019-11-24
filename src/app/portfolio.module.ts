@@ -8,16 +8,18 @@ import { StoreModule } from "@ngrx/store";
 import { HotTableModule } from "ng2-handsontable";
 
 import { PortfolioRoutingModule } from "./portfolio-routing.module";
-import { PortfolioComponent } from "./portfolio.component";
+import { PortfolioComponent } from "./portfolio/portfolio.component";
 import { HttpClientModule } from "@angular/common/http";
-import { PortfolioReducer } from "../state/portfolio.reducer";
+import { PortfolioReducer } from "./state/portfolio.reducer";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
-import { DataManagerModule } from "../features/data-manager/data-manager.module";
+import { DataManagerModule } from "./features/data-manager/data-manager.module";
 import { TabsModule } from "ngx-bootstrap/tabs";
-import { LayerModule } from "../features/layer/layer.module";
+import { LayerModule } from "./features/layer/layer.module";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "src/environments/environment";
+
+import { LacModule } from './features/lac/lac.module';
 
 @NgModule({
   declarations: [PortfolioComponent, PortfolioRoutingModule.components],
@@ -35,6 +37,7 @@ import { environment } from "src/environments/environment";
     NgbModule,
     TabsModule.forRoot(),
     LayerModule,
+    LacModule,
     StoreDevtoolsModule.instrument({
       name: "stock dev tools",
       maxAge: 25,

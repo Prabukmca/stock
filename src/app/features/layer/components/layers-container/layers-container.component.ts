@@ -25,20 +25,24 @@ export class LayersContainerComponent implements OnInit {
   @Input() value: boolean;
 
   constructor(
-    private store: Store<fromLayer.State>,
+    private store: Store<fromLayer.LayerState>,
     private layerService: LayerService
   ) {}
 
   ngOnInit() {
     this.getLayers();
 
-    this.store.pipe(select(fromLayer.getDeletedLayersState )).subscribe(data => {
-      console.log("got deleted layers", data);
-    });
+    this.store
+      .pipe(select("layerReducer"))
+      .subscribe(data => console.log('deleted', data));
 
-    this.store.pipe(select((state: any) => state)).subscribe(data => {
-      console.log(data);
-    });
+    // this.store.pipe(select(fromLayer.getDeletedLayersState )).subscribe(data => {
+    //   console.log("got deleted layers", data);
+    // });
+
+    // this.store.pipe(select((state: any) => state)).subscribe(data => {
+    //   console.log(data);
+    // });
   }
   getLayers() {
     this.layerService.getLayers().subscribe(data => {

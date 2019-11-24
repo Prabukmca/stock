@@ -1,0 +1,40 @@
+<form [formGroup]="lacFormGroup">
+  <div [formGroup]="lacFormGroup">
+    <div formArrayName="lacFormArray">
+      <div
+        [formGroupName]="i"
+        *ngFor="let item of lacFormArray.controls; let i = index"
+      >
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="cityId">Type Load</label>
+          <div class="col-md-3">
+            <ng-select
+              [items]="typeLoadList"
+              bindLabel="name"
+              placeholder="Select type load"
+              formControlName="typeLoad" 
+              (change) = "onTypeChange($event,i)"             
+            >
+            </ng-select>
+          </div>
+          <label class="col-md-2 col-form-label" for="cityId">Zone Peril</label>
+          <div class="col-md-3">
+            <ng-select
+              [items]="item.get('typeLoad').value.zonePeril"
+              bindLabel="name"
+              placeholder="Select zone peril"
+              formControlName="zonePeril"
+            >
+            </ng-select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<br>Dirty: {{ lacFormGroup.dirty }}
+<br>Touched: {{ lacFormGroup.touched }}
+<br>Valid: {{ lacFormGroup.valid }}
+<br>Value: {{ lacFormGroup.value | json }}
+<br>Street: {{ lacFormGroup.get('0.typeLoad')?.value }}
