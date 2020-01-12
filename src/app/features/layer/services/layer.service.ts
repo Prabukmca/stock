@@ -19,7 +19,7 @@ export class LayerService {
   getLayers(): Observable<Layer[]> {
     return this.httpClient
       .get<Layer[]>(`${this.baseUrl}/layers`)
-      .pipe(tap(data => console.log(JSON.stringify(data))));
+      .pipe(tap(data => console.log('in service data ', JSON.stringify(data))));
   }
 
   getLayerById(id: number): Observable<Layer> {

@@ -1,4 +1,4 @@
-<form [formGroup]="lacFormGroup">
+<!-- <form [formGroup]="lacFormGroup">
   <div [formGroup]="lacFormGroup">
     <div formArrayName="lacFormArray">
       <div
@@ -7,7 +7,7 @@
       >
         <div class="form-group row mb-2">
           <label class="col-md-2 col-form-label" for="cityId">Type Load</label>
-          <div class="col-md-3">
+          <div class="col-md-3" *ngIf="typeLoadList">
             <ng-select
               [items]="typeLoadList"
               bindLabel="name"
@@ -17,6 +17,11 @@
             >
             </ng-select>
           </div>
+
+          <div class="col-md-3" *ngIf="!typeLoadList">
+            <div class="ghostTypeLoad"></div>
+          </div>
+
           <label class="col-md-2 col-form-label" for="cityId">Zone Peril</label>
           <div class="col-md-3">
             <ng-select
@@ -37,4 +42,20 @@
 <br>Touched: {{ lacFormGroup.touched }}
 <br>Valid: {{ lacFormGroup.valid }}
 <br>Value: {{ lacFormGroup.value | json }}
-<br>Street: {{ lacFormGroup.get('0.typeLoad')?.value }}
+<br>Street: {{ lacFormGroup.get('0.typeLoad')?.value }} -->
+
+
+
+<div class="col-md-3" *ngIf="typeLoadList.length > 0">
+  <ng-select
+    [items]="typeLoadList"
+    bindLabel="name"
+    placeholder="Select type load"
+    formControlName="typeLoad" 
+    (change) = "onTypeChange($event,i)"             
+  >
+  </ng-select>
+</div>
+<div class="col-md-3" *ngIf="typeLoadList.length === 0">
+  <div class=" ghostTypeLoad"></div>
+</div>

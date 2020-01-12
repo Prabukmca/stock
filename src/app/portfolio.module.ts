@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, APP_INITIALIZER } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -19,7 +19,13 @@ import { LayerModule } from "./features/layer/layer.module";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "src/environments/environment";
 
-import { LacModule } from './features/lac/lac.module';
+import { LacModule } from "./features/lac/lac.module";
+
+import { EffectsModule } from "@ngrx/effects";
+import { AppInitService } from './app-services/app-config.service';
+import { initializeApp } from './app-services/app-init-data.service';
+
+
 
 @NgModule({
   declarations: [PortfolioComponent, PortfolioRoutingModule.components],
@@ -33,6 +39,7 @@ import { LacModule } from './features/lac/lac.module';
     MatTabsModule,
     HttpClientModule,
     StoreModule.forRoot({ PortfolioReducer }),
+    EffectsModule.forRoot([]),
     HotTableModule,
     NgbModule,
     TabsModule.forRoot(),
@@ -45,7 +52,15 @@ import { LacModule } from './features/lac/lac.module';
     })
   ],
   exports: [MatTabsModule, NgbModule],
-  providers: [],
+  providers: [
+    AppInitService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AppInitService],
+      multi : true
+    }
+  ],
   bootstrap: [PortfolioComponent]
 })
 export class PortfolioModule {}

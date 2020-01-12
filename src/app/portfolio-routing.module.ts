@@ -7,6 +7,7 @@ import { EquityLongTermComponent } from "./features/components/equity-long-term/
 import { EquityShortTermComponent } from "./features/components/equity-short-term/equity-short-term.component";
 import { EquityTermsComponent } from "./features/components/equity-terms/equity-terms.component";
 
+
 const routes: Routes = [
   { path: "", redirectTo: "/stock", pathMatch: "full" },
   { path: "stock", component: StockComponent },
@@ -41,6 +42,6 @@ export class PortfolioRoutingModule {
     EquityLongTermComponent,
     EquityShortTermComponent,
     EquityTermsComponent,
-    HottableDemoComponent
+    HottableDemoComponent,
   ];
 }

@@ -1,6 +1,7 @@
 import { Layer } from "../models/layer.model";
 import * as fromRoot from "../../../state/portfolio.state";
 import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { LayerActionTypes, LayerActions } from "./layer.actions";
 
 export interface State extends fromRoot.State {
   layers: LayerState;
@@ -9,36 +10,66 @@ export interface State extends fromRoot.State {
 export interface LayerState {
   layers: Layer[];
   deletedLayers: Layer[];
+  error: string;
 }
 
 const initialState: LayerState = {
   layers: [],
-  deletedLayers: []
+  deletedLayers: [],
+  error: ""
 };
 
 const getLayersFeatureState = createFeatureSelector<LayerState>("layerReducer");
 
 export const getDeletedLayersState = createSelector(
   getLayersFeatureState,
-  state => state.deletedLayers
+  state => (state ? state.deletedLayers : state)
 );
 
-export const getLayersState = createSelector(
-  getLayersFeatureState,
-  state => state.layers
+export const getLayersState = createSelector(getLayersFeatureState, state => {
+  state => (state ? state.layers : state);
+});
+
+export const getError = createSelector(getLayersFeatureState, state =>
+  state ? state.error : state
 );
 
-export function layerReducer(state = initialState, action): LayerState {
+export function layerReducer(
+  state = initialState,
+  action: LayerActions
+): LayerState {
   switch (action.type) {
-    case "LayerData":
+    case LayerActionTypes.AddLayer:
       return {
-        ...state
+        ...state,
+        layers: [...state.layers, action.payload]
       };
 
-    case "DELETED_LAYERS":
+    case LayerActionTypes.DeleteLayer:
       return {
         ...state,
         deletedLayers: [...state.deletedLayers, action.payload]
       };
+
+    case LayerActionTypes.Load:
+      return {
+        ...state
+      };
+
+    case LayerActionTypes.LoadSuccess:
+      return {
+        ...state,
+        layers: action.payload
+      };
+
+    case LayerActionTypes.LoadFail: {
+      return {
+        ...state,
+        layers: [],
+        error: action.payload
+      };
+    }
+    default:
+      return state;
   }
 }

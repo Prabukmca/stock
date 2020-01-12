@@ -153,10 +153,50 @@
   ],
   "layers": [
     {
-      "id": 17,
+      "id": 18,
       "name": "layer4",
       "type": "layer4 type",
       "description": "layer4 description"
+    },
+    {
+      "id": 19,
+      "name": "layer4",
+      "type": "layer4 type",
+      "description": "layer4 description"
+    },
+    {
+      "id": 20,
+      "name": "layer4",
+      "type": "layer4 type",
+      "description": "layer4 description"
+    },
+    {
+      "id": 21,
+      "name": "layer4",
+      "type": "layer4 type",
+      "description": "layer4 description"
+    }
+  ],
+  "typeLoads": [
+    {
+      "name": "typeload1",
+      "zonePeril": [
+        "z1",
+        "z2"
+      ]
+    },
+    {
+      "name": "typeload2"
+    },
+    {
+      "name": "typeload3"
+    },
+    {
+      "name": "typeload4",
+      "zonePeril": [
+        "z5",
+        "z6"
+      ]
     }
   ]
 }

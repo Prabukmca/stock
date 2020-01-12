@@ -7,17 +7,21 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { LayerRoutingModule } from "./layer-routing.module";
 import { StoreModule } from "@ngrx/store";
 import { layerReducer } from "./state/layer.reducer";
-import { LayersContainerComponent } from "./components/layers-container/layers-container.component";
+
 import { RemovedLayersComponent } from "./components/removed-layers/removed-layers.component";
+import { LayersComponent } from "./components/layers/layers.component";
+import { EffectsModule } from '@ngrx/effects';
+import { LayerEffects } from './state/layer.effect';
 
 @NgModule({
-  declarations: [LayersContainerComponent, RemovedLayersComponent],
+  declarations: [LayerRoutingModule.components],
   imports: [
     CommonModule,
     FormsModule,
     LayerRoutingModule,
     NgbModule,
-    StoreModule.forFeature("layerReducer", layerReducer)
+    StoreModule.forFeature("layerReducer", layerReducer),
+    EffectsModule.forFeature([LayerEffects]),
   ]
 })
 export class LayerModule {}

@@ -6,6 +6,7 @@ import {
   AbstractControl
 } from "@angular/forms";
 import { debounceTime } from "rxjs/operators";
+import { LacService } from "../../services/lac.service";
 
 @Component({
   selector: "smc-lac-layer-block",
@@ -16,6 +17,7 @@ export class LacLayerBlockComponent implements OnInit {
   typeLoadName: string;
   lacFormGroup: FormGroup;
   pricingGroups = [1, 2, 3, 4];
+  typeLoadList = [];
 
   typeLoadControl: AbstractControl;
   layerGroupControls: FormGroup;
@@ -24,17 +26,12 @@ export class LacLayerBlockComponent implements OnInit {
     return this.lacFormGroup.get("lacFormArray") as FormArray;
   }
 
-  typeLoadList = [
-    { name: "typeload1", zonePeril: ["z1", "z2"] },
-    { name: "typeload2" },
-    { name: "typeload3" },
-    { name: "typeload4", zonePeril: ["z5", "z6"] }
-  ];
   zonePerilList = [];
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private lacService: LacService) {}
 
   ngOnInit() {
     this.initControls();
+    this.initTypeLoads();
   }
   ngAfterViewInit() {
     // const typeLoadControl = this.lacFormArray.get("typeLoad");
@@ -79,6 +76,23 @@ export class LacLayerBlockComponent implements OnInit {
       });
     });
   }
+
+  initTypeLoads() {
+    setTimeout(() => {
+      this.typeLoadList = [
+        { name: "typeload1", zonePeril: ["z1", "z2"] },
+        { name: "typeload2" },
+        { name: "typeload3" },
+        { name: "typeload4", zonePeril: ["z5", "z6"] }
+      ];
+    }, 2000);
+    // this.lacService.getTypeLoads().subscribe(data => {
+    //   setTimeout(() => {
+    //     this.typeLoadList = data;
+    //   }, 500);
+    // });
+  }
+
   onFormArrayValueChanged(value: any): void {
     console.log("on form array value changed", value);
   }
