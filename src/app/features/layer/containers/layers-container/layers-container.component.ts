@@ -34,38 +34,19 @@ export class LayersContainerComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new LayerActions.Load());
-    this.store
-      .pipe(select(fromLayer.getLayersState))
-      .subscribe( data => console.log('got data? ', data)
-      )
+    this.layers$ = this.store.pipe(select(fromLayer.getLayersState));
   }
-  getLayers() {
-    // this.layerService.getLayers().subscribe(data => {
-    //   this.layers = data;
-    // });
+
+  eventHandled($event) {
+    if ($event.type === "ADD_LAYER") {
+      const layer = {} as Layer;
+      layer.name = "layer test";
+      layer.type = "layer type";
+      layer.description = "desc";
+
+      this.store.dispatch(new LayerActions.AddLayerAction(layer));
+
+      
+    }
   }
-  // getLayer() {
-  //   this.layerService.getLayerById(this.searchLayerId).subscribe(data => {
-  //     this.layer = data;
-  //   });
-  // }
-  // add() {
-  //   const layer = {
-  //     id: 0,
-  //     name: "layer4",
-  //     type: "layer4 type",
-  //     description: "layer4 description"
-  //   };
-
-  //   this.layerService.addLayer(layer).subscribe(data => {
-  //     this.layers.push(data);
-  //   });
-  // }
-  // delete(layer: Layer) {
-  //   this.store.dispatch(new LayerActions.DeleteLayerAction(layer));
-
-  //   this.layerService.deleteLayer(layer).subscribe(data => {
-  //     this.layers.splice(this.layers.indexOf(layer), 1);
-  //   });
-  // }
 }

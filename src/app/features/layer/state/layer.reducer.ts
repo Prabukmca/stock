@@ -26,9 +26,10 @@ export const getDeletedLayersState = createSelector(
   state => (state ? state.deletedLayers : state)
 );
 
-export const getLayersState = createSelector(getLayersFeatureState, state => {
-  state => (state ? state.layers : state);
-});
+export const getLayersState = createSelector(
+  getLayersFeatureState,
+  state => state.layers
+);
 
 export const getError = createSelector(getLayersFeatureState, state =>
   state ? state.error : state
@@ -39,10 +40,28 @@ export function layerReducer(
   action: LayerActions
 ): LayerState {
   switch (action.type) {
-    case LayerActionTypes.AddLayer:
+    // case LayerActionTypes.AddLayer:
+    //   return {
+    //     ...state,
+    //     layers: [...state.layers, action.payload]
+    //   };
+
+    case LayerActionTypes.AddLayerSuccess:
+      const test = {
+        ...state,
+        layers: [...state.layers, action.payload],
+        error: ""
+      };
+      return test;
+    // return {
+    //   ...state,
+    //   layers: [...state.layers, action.payload],
+    //   error: ""
+    // };
+    case LayerActionTypes.AddLayerFail:
       return {
         ...state,
-        layers: [...state.layers, action.payload]
+        error: action.payload
       };
 
     case LayerActionTypes.DeleteLayer:
@@ -51,16 +70,13 @@ export function layerReducer(
         deletedLayers: [...state.deletedLayers, action.payload]
       };
 
-    case LayerActionTypes.Load:
-      return {
-        ...state
-      };
-
     case LayerActionTypes.LoadSuccess:
-      return {
+      const loadSuccess = {
         ...state,
-        layers: action.payload
+        layers: [...action.payload],
+        error: ""
       };
+      return loadSuccess;
 
     case LayerActionTypes.LoadFail: {
       return {

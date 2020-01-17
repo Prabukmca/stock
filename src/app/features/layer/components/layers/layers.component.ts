@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { Layer } from "../../models/layer.model";
 
 @Component({
@@ -9,7 +9,13 @@ import { Layer } from "../../models/layer.model";
 export class LayersComponent implements OnInit {
   @Input() layers: Layer[];
 
+  @Output() eventHandled = new EventEmitter<any>();
+
   constructor() {}
 
   ngOnInit() {}
+
+  add() {
+    this.eventHandled.emit({ type: "ADD_LAYER", data: null });
+  }
 }

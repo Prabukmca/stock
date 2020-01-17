@@ -4,6 +4,8 @@ import { Layer } from "../models/layer.model";
 export enum LayerActionTypes {
   GetLayers = "[Layer] Get",
   AddLayer = "[Layer] Add ",
+  AddLayerSuccess = "[Layer] AddLayerSuccess",
+  AddLayerFail = "[Layer] AddLayerFail",
   DeleteLayer = "[Layer] Delete",
   Load = "[Layer] Load",
   LoadSuccess = "[Layer] Load Success",
@@ -14,6 +16,17 @@ export class AddLayerAction implements Action {
   readonly type = LayerActionTypes.AddLayer;
 
   constructor(public payload: Layer) {}
+}
+
+export class AddLayerSuccess implements Action {
+  readonly type = LayerActionTypes.AddLayerSuccess;
+
+  constructor(public payload: Layer) {}
+}
+
+export class AddLayerFail implements Action {
+  readonly type = LayerActionTypes.AddLayerFail;
+  constructor(public payload: string) {}
 }
 
 export class DeleteLayerAction implements Action {
@@ -37,6 +50,8 @@ export class LoadFail implements Action {
 
 export type LayerActions =
   | AddLayerAction
+  | AddLayerSuccess
+  | AddLayerFail
   | DeleteLayerAction
   | Load
   | LoadSuccess
