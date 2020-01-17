@@ -7,7 +7,7 @@ import {
 } from "@angular/forms";
 import { debounceTime } from "rxjs/operators";
 import { LacService } from "../../services/lac.service";
-import { LacFacade } from '../../facades/lac-facade';
+import { LacFacade } from "../../facades/lac-facade";
 
 @Component({
   selector: "smc-lac-layer-block",
@@ -28,14 +28,17 @@ export class LacLayerBlockComponent implements OnInit {
   }
 
   zonePerilList = [];
-  constructor(private fb: FormBuilder, private lacService: LacService, private lacFacade: LacFacade) {}
+  constructor(
+    private fb: FormBuilder,
+    private lacService: LacService,
+    private lacFacade: LacFacade
+  ) {}
 
   ngOnInit() {
     this.lacFacade.LayerMethodOne();
     this.lacFacade.PgMethodOne();
     this.initControls();
     this.initTypeLoads();
-    
   }
   ngAfterViewInit() {
     // const typeLoadControl = this.lacFormArray.get("typeLoad");

@@ -13,7 +13,7 @@ import { LayerFacade } from "./layer-facade";
 })
 export class LacFacade implements CommonFun, PgMethods, LayerMethods {
   LayerMethodOne(): void {
-    console.log("layr one called in lacfacade");
+    console.log("layr one called in lacfacade");    
   }
 
   PgMethodOne(): void {
@@ -30,4 +30,4 @@ export class LacFacade implements CommonFun, PgMethods, LayerMethods {
     return a * b;
   }
 }
-applyMixins(LacFacade, [PgFacade, LayerFacade]);
+// applyMixins(LacFacade, [PgFacade, LayerFacade]);
