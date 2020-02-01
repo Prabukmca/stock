@@ -3,7 +3,8 @@ import {
   CommonFun,
   PgMethods,
   LayerMethods,
-  applyMixins
+  applyMixins,
+  Buyer
 } from "../models/lac-model";
 import { PgFacade } from "./pg-facade";
 import { LayerFacade } from "./layer-facade";
@@ -12,13 +13,9 @@ import { LayerFacade } from "./layer-facade";
   providedIn: "root"
 })
 export class LacFacade implements CommonFun, PgMethods, LayerMethods {
-  LayerMethodOne(): void {
-    console.log("layr one called in lacfacade");    
-  }
+  LayerMethodOne: () => void;
 
-  PgMethodOne(): void {
-    console.log("pgmethod one called in lacfacade");
-  }
+  PgMethodOne: () => void;
 
   sum(a: number, b: number): number {
     return a + b;
@@ -28,6 +25,9 @@ export class LacFacade implements CommonFun, PgMethods, LayerMethods {
   }
   multiply(a: number, b: number): number {
     return a * b;
+    const buyer = new Buyer();
   }
+
+  
 }
-// applyMixins(LacFacade, [PgFacade, LayerFacade]);
+applyMixins(LacFacade, [PgFacade, LayerFacade]);

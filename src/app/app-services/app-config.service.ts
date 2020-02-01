@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { map, catchError } from "rxjs/operators";
+import { AppData } from "./app-init-data";
 
 @Injectable()
 export class AppInitService {
@@ -17,14 +18,22 @@ export class AppInitService {
       catchError(err => of(err))
     );
   }
-  Init() {
-    return new Promise<void>((resolve, reject) => {
-      const BASE_URL = "http://localhost:3000";
-      console.log("App init service called");
-      setTimeout(() => {
-        console.log("App Init service finished");
-        resolve();
-      }, 6000);
-    });
-  }
 }
+
+export function initializeApp() {
+  const path = "./assets/config.json";
+  const result = {} as AppData;
+  return new Promise<void>((resolve, reject) => {
+    return this.http.get(path).then(data => (result.config = data));
+  });
+}
+
+// export function initializeApp() {
+// const path = "./assets/config.json";
+// return new Promise<void>((resolve, reject) => {
+//   return this.http.get(path).pipe(
+//     map((res: any) => <AppData>res),
+//     catchError(err => of(err))
+//   );
+// });
+// }

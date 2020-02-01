@@ -8,6 +8,7 @@ import {
 import { debounceTime } from "rxjs/operators";
 import { LacService } from "../../services/lac.service";
 import { LacFacade } from "../../facades/lac-facade";
+import { SourceModel, DestinationModel } from "../../models/lac-model";
 
 @Component({
   selector: "smc-lac-layer-block",
@@ -19,6 +20,7 @@ export class LacLayerBlockComponent implements OnInit {
   lacFormGroup: FormGroup;
   pricingGroups = [1, 2, 3, 4];
   typeLoadList = [];
+  source: SourceModel[] = [];
 
   typeLoadControl: AbstractControl;
   layerGroupControls: FormGroup;
@@ -39,6 +41,38 @@ export class LacLayerBlockComponent implements OnInit {
     this.lacFacade.PgMethodOne();
     this.initControls();
     this.initTypeLoads();
+    this.buildSourceModel();
+  }
+  buildSourceModel() {
+    let source: SourceModel[] = [
+      {
+        id: 1,
+        name: "test",
+        address: "addre"
+      },
+      {
+        id: 2,
+        name: "test",
+        address: "addre"
+      },
+      {
+        id: 3,
+        name: "test",
+        address: "addre"
+      }
+    ];
+
+    let desti: DestinationModel[] = [];
+
+    Object.assign(desti, source);
+
+    source.forEach(element => {
+      console.log("source", element);
+    });
+
+    desti.forEach(element => {
+      console.log("desti", element);
+    });
   }
   ngAfterViewInit() {
     // const typeLoadControl = this.lacFormArray.get("typeLoad");

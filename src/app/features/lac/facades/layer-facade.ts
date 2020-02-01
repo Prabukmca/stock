@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CommonFun, CommonLogics, LayerMethods } from "../models/lac-model";
-import { LacFacade } from "./lac-facade";
+
 
 @Injectable({
   providedIn: "root"
@@ -18,5 +18,5 @@ export class LayerFacade implements CommonFun, CommonLogics, LayerMethods {
   sum(a: number, b: number): number {
     return a + b + 5;
   }
-  constructor(private lacFacade: LacFacade) {}
+  constructor() {}
 }

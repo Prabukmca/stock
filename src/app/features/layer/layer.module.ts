@@ -24,4 +24,6 @@ import { LayerEffects } from './state/layer.effect';
     EffectsModule.forFeature([LayerEffects]),
   ]
 })
-export class LayerModule {}
+export class LayerModule {
+  
+}

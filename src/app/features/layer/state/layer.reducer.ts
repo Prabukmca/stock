@@ -23,7 +23,7 @@ const getLayersFeatureState = createFeatureSelector<LayerState>("layerReducer");
 
 export const getDeletedLayersState = createSelector(
   getLayersFeatureState,
-  state => (state ? state.deletedLayers : state)
+  state => state.deletedLayers
 );
 
 export const getLayersState = createSelector(

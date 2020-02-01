@@ -1,7 +1,11 @@
-<div class = 'row'>
-  <div class='col-md-4'>
-    <smc-layers [layers] = "layers$ | async" (eventHandled) = 'eventHandled($event)' ></smc-layers>
+<div class="row">
+  <div class="col-md-12">
+    <smc-layers
+      [layers]="layers$ | async"
+      (eventHandled)="eventHandled($event)"
+    ></smc-layers>
   </div>
-  <div class='col-md-8'></div>
-  <smc-removed-layers></smc-removed-layers>
+  <div class="col-md-12">
+    <smc-removed-layers [deletedLayers$]="deletedLayers$" ></smc-removed-layers>
+  </div>
 </div>

@@ -1,5 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Store, select } from "@ngrx/store";
+import { Layer } from '../../models/layer.model';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: "smc-removed-layers",
@@ -7,11 +9,12 @@ import { Store, select } from "@ngrx/store";
   styleUrls: ["./removed-layers.component.scss"]
 })
 export class RemovedLayersComponent implements OnInit {
+
+  @Input() deletedLayers$ : Observable<Layer[]>;
+
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
-    this.store
-      .pipe(select("DELETED_LAYERS"))
-      .subscribe(data => console.log("got deleted layers", data));
+    
   }
 }

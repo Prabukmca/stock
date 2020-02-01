@@ -7,7 +7,6 @@ import { EquityLongTermComponent } from "./features/components/equity-long-term/
 import { EquityShortTermComponent } from "./features/components/equity-short-term/equity-short-term.component";
 import { EquityTermsComponent } from "./features/components/equity-terms/equity-terms.component";
 
-
 const routes: Routes = [
   { path: "", redirectTo: "/stock", pathMatch: "full" },
   { path: "stock", component: StockComponent },
@@ -28,6 +27,10 @@ const routes: Routes = [
     path: "lac",
     loadChildren: () =>
       import("./features/lac/lac.module").then(l => l.LacModule)
+  },
+  {
+    path:'auth',
+    loadChildren:()=> import("./features/auth/auth.module").then(a=>a.AuthModule)
   }
 ];
 
@@ -42,6 +45,6 @@ export class PortfolioRoutingModule {
     EquityLongTermComponent,
     EquityShortTermComponent,
     EquityTermsComponent,
-    HottableDemoComponent,
+    HottableDemoComponent
   ];
 }

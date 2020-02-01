@@ -18,4 +18,8 @@ export class LayersComponent implements OnInit {
   add() {
     this.eventHandled.emit({ type: "ADD_LAYER", data: null });
   }
+
+  delete($event) {
+    this.eventHandled.emit({ type: "DELETE_LAYER", data: $event });
+  }
 }

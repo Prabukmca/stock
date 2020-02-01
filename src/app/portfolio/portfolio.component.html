@@ -32,14 +32,21 @@
           >Layers</a
         >
         <a
-      [routerLink]="['/lac']"
-      class="nav-item nav-link"
-      routerLinkActive="router-link-active"
-      >LAC</a>
+          [routerLink]="['/lac']"
+          class="nav-item nav-link"
+          routerLinkActive="router-link-active"
+          >LAC</a
+        >
       </div>
       <div class="navbar-nav ml-auto">
         <a href="#" class="nav-item nav-link">Register</a>
-        <a href="#" class="nav-item nav-link">Login</a>
+        <a
+          [routerLink]="['/auth/login']"
+          class="nav-item nav-link"
+          routerLinkActive="router-link-active"
+          class="nav-item nav-link"
+          >Login</a
+        >
       </div>
     </div>
   </div>

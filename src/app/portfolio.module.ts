@@ -22,10 +22,11 @@ import { environment } from "src/environments/environment";
 import { LacModule } from "./features/lac/lac.module";
 
 import { EffectsModule } from "@ngrx/effects";
-import { AppInitService } from './app-services/app-config.service';
-import { initializeApp } from './app-services/app-init-data.service';
-
-
+import {
+  AppInitService,
+  initializeApp
+} from "./app-services/app-config.service";
+import { AutocompleteFilterComponent } from './shared/components/autocomplete-filter/autocomplete-filter.component';
 
 @NgModule({
   declarations: [PortfolioComponent, PortfolioRoutingModule.components],
@@ -52,15 +53,15 @@ import { initializeApp } from './app-services/app-init-data.service';
     })
   ],
   exports: [MatTabsModule, NgbModule],
-  providers: [
-    AppInitService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeApp,
-      deps: [AppInitService],
-      multi : true
-    }
-  ],
+  // providers: [
+  //   AppInitService,
+  //   {
+  //     provide: APP_INITIALIZER,
+  //     useFactory: initializeApp,
+  //     deps: [AppInitService],
+  //     multi: true
+  //   }
+  // ],
   bootstrap: [PortfolioComponent]
 })
 export class PortfolioModule {}

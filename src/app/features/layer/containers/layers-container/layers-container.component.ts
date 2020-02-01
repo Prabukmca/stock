@@ -20,9 +20,9 @@ import { Observable } from "rxjs";
 export class LayersContainerComponent implements OnInit {
   title = "Default title";
   layers$: Observable<Layer[]>;
+  deletedLayers$: Observable<Layer[]>;
   layer: Layer;
   searchLayerId: number;
-  deletedLayers: Layer[] = [];
 
   @Input() value: boolean;
   layers: Layer[];
@@ -35,6 +35,10 @@ export class LayersContainerComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new LayerActions.Load());
     this.layers$ = this.store.pipe(select(fromLayer.getLayersState));
+
+    this.deletedLayers$ = this.store.pipe(
+      select(fromLayer.getDeletedLayersState)
+    );
   }
 
   eventHandled($event) {
@@ -45,8 +49,9 @@ export class LayersContainerComponent implements OnInit {
       layer.description = "desc";
 
       this.store.dispatch(new LayerActions.AddLayerAction(layer));
-
-      
+    }
+    if ($event.type === "DELETE_LAYER") {
+      this.store.dispatch(new LayerActions.DeleteLayerAction($event.data));
     }
   }
 }

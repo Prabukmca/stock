@@ -27,3 +27,35 @@ export function applyMixins(derivedCtor: any, baseCtors: any[]) {
     });
   });
 }
+
+export class Product {
+  productName: string;
+  type?: string;
+  price?: number;
+  dateCreated?: Date;
+
+  companyId?: string;
+
+  static tableName: string = "Products";
+  static displayProp: string = "productName";
+}
+
+export class Buyer {
+  buyerName: string;
+  location?: string;
+  productsPurchased?: Product[];
+
+  static tableName: string = "Buyers";
+  static displayProp: string = "buyerName";
+}
+
+
+export interface SourceModel{
+  id : number,
+  name : string,
+  address : string
+}
+export interface DestinationModel{
+  id : number;
+  name : string;
+}
