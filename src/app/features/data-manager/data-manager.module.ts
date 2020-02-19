@@ -7,11 +7,15 @@ import { DataManagerRoutingModule } from "./data-manager-routing.module";
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './state/dataManager.reducer';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { DynamicComponentOneComponent } from './components/dynamic-component-one/dynamic-component-one.component';
+import { DynamicComponentTwoComponent } from './components/dynamic-component-two/dynamic-component-two.component';
+import { DynamicComponentThreeComponent } from './components/dynamic-component-three/dynamic-component-three.component';
 
 
 @NgModule({
-  declarations: [DataManagerRoutingModule.components],
+  declarations: [DataManagerRoutingModule.components, DynamicComponentOneComponent, DynamicComponentTwoComponent, DynamicComponentThreeComponent],
   imports: [CommonModule, DataManagerRoutingModule, MatTabsModule, FormsModule,
-    StoreModule.forFeature('dataManagers',reducer), TabsModule.forRoot()]
+    StoreModule.forFeature('dataManagers',reducer), TabsModule.forRoot()],
+    entryComponents:[DynamicComponentOneComponent, DynamicComponentTwoComponent, DynamicComponentThreeComponent]
 })
 export class DataManagerModule {}

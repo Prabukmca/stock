@@ -1,11 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { DataManagerService } from "../services/data-manager.service";
 
 @Component({
   selector: "smc-data-manager",
   templateUrl: "./data-manager.component.html",
-  styleUrls: ["./data-manager.component.scss"]
+  styleUrls: ["./data-manager.component.scss"],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class DataManagerComponent implements OnInit {
   tabs = [];

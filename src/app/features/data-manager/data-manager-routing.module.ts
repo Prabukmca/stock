@@ -21,7 +21,8 @@ const routes: Routes = [
         path: "dataexplorer",
         component: DataExplorerComponent,
         canDeactivate: [CanDeactivateGuard]
-      }
+      },
+      { path: "detail", component: DataManagerDetailsComponent }
     ]
   }
 ];

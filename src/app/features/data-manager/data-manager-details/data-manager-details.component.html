@@ -1,1 +1,14 @@
-<p>data-manager-details works!</p>
+<div class="row comp">
+  <div class="col-lg-4 left">
+    <button type="button" (click)="componentOneClick()">Component 1</button>
+
+    <button type="button" (click)="componentTwoClick()">Component 2</button>
+
+    <button type="button" (click)="componentThreeClick()">Component 3</button>
+  </div>
+  <div class="col-lg-8 right">
+    <!-- <ng-template ad-host></ng-template> -->
+    <ng-template #insertionPoint></ng-template>
+    
+  </div>
+</div>

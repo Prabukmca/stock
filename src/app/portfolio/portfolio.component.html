@@ -13,12 +13,15 @@
       <div class="navbar-nav">
         <a href="#" class="nav-item nav-link active">Home</a>
 
-        <a
-          [routerLink]="['/datamanager']"
-          class="nav-item nav-link"
-          routerLinkActive="router-link-active"
-          >Data Manager</a
-        >
+        <div class="dropdown">
+          <button class="dropbtn">Data Manager</button>
+          <div class="dropdown-content">
+            <a href="/datamanager">Explorer</a>
+            <a href="/datamanager/detail">Detail</a>
+            <a href="#">View</a>
+          </div>
+        </div>
+
         <a
           [routerLink]="['/hottabledemo']"
           class="nav-item nav-link"

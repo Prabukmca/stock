@@ -26,10 +26,12 @@ import {
   AppInitService,
   initializeApp
 } from "./app-services/app-config.service";
-import { AutocompleteFilterComponent } from './shared/components/autocomplete-filter/autocomplete-filter.component';
+import { AutocompleteFilterComponent } from "./shared/components/autocomplete-filter/autocomplete-filter.component";
+import { HottableDemoComponent } from "./features/components/hottable-demo/hottable-demo.component";
+import { AdDirective } from './shared/directives/AdDirective/ad-directive.directive';
 
 @NgModule({
-  declarations: [PortfolioComponent, PortfolioRoutingModule.components],
+  declarations: [PortfolioComponent, PortfolioRoutingModule.components, AdDirective],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -62,6 +64,7 @@ import { AutocompleteFilterComponent } from './shared/components/autocomplete-fi
   //     multi: true
   //   }
   // ],
+  entryComponents: [HottableDemoComponent],
   bootstrap: [PortfolioComponent]
 })
 export class PortfolioModule {}

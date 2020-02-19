@@ -1,14 +1,23 @@
-import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  ChangeDetectionStrategy,
+  Input
+} from "@angular/core";
 import { Observable } from "rxjs";
-import { DialogService } from 'src/app/portfolio/dialog.service';
-import { TabsetComponent, TabDirective } from 'ngx-bootstrap';
+import { DialogService } from "src/app/portfolio/dialog.service";
+import { TabsetComponent, TabDirective } from "ngx-bootstrap";
 
 @Component({
   selector: "smc-data-explorer",
   templateUrl: "./data-explorer.component.html",
-  styleUrls: ["./data-explorer.component.scss"]
+  styleUrls: ["./data-explorer.component.scss"],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DataExplorerComponent implements OnInit {
+  @Input() vm: string;
   isNotSaved = false;
   constructor(private dialogService: DialogService) {}
 
@@ -23,24 +32,23 @@ export class DataExplorerComponent implements OnInit {
     }
     return true;
   }
-  
+
   disableSwitching: boolean;
-  @ViewChild('tabset', {static:false}) tabsetEl: ElementRef;
-  @ViewChild('tabset',  {static:false}) tabset: TabsetComponent;
-  @ViewChild('first',  {static:false}) first: TabDirective;
-  @ViewChild('second',  {static:false}) second: TabDirective;
-  
+  @ViewChild("tabset", { static: false }) tabsetEl: ElementRef;
+  @ViewChild("tabset", { static: false }) tabset: TabsetComponent;
+  @ViewChild("first", { static: false }) first: TabDirective;
+  @ViewChild("second", { static: false }) second: TabDirective;
 
   confirmTabSwitch($event) {
     if (this.disableSwitching) {
-      const confirm = window.confirm('Discard changes and switch tab?');
+      const confirm = window.confirm("Discard changes and switch tab?");
       if (confirm) {
         this.disableSwitching = false;
-        
-        const liArr = (this.tabsetEl.nativeElement.querySelectorAll('ul li'));
+
+        const liArr = this.tabsetEl.nativeElement.querySelectorAll("ul li");
         let tabIndex;
         liArr.forEach((li, i) => {
-          if(li.contains($event.target)) {
+          if (li.contains($event.target)) {
             tabIndex = i;
           }
         });
@@ -51,5 +59,4 @@ export class DataExplorerComponent implements OnInit {
       }
     }
   }
-
 }
