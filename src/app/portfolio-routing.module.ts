@@ -2,10 +2,6 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { StockComponent } from "./features/components/stock/stock.component";
 import { HottableDemoComponent } from "./features/components/hottable-demo/hottable-demo.component";
-import { EquityComponent } from "./features/components/equity/equity.component";
-import { EquityLongTermComponent } from "./features/components/equity-long-term/equity-long-term.component";
-import { EquityShortTermComponent } from "./features/components/equity-short-term/equity-short-term.component";
-import { EquityTermsComponent } from "./features/components/equity-terms/equity-terms.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/stock", pathMatch: "full" },
@@ -14,37 +10,51 @@ const routes: Routes = [
     path: "datamanager",
     loadChildren: () =>
       import("./features/data-manager/data-manager.module").then(
-        d => d.DataManagerModule
-      )
+        (d) => d.DataManagerModule
+      ),
   },
   { path: "hottabledemo", component: HottableDemoComponent },
   {
     path: "layers",
     loadChildren: () =>
-      import("./features/layer/layer.module").then(l => l.LayerModule)
+      import("./features/layer/layer.module").then((l) => l.LayerModule),
   },
   {
     path: "lac",
     loadChildren: () =>
-      import("./features/lac/lac.module").then(l => l.LacModule)
+      import("./features/lac/lac.module").then((l) => l.LacModule),
   },
   {
-    path:'auth',
-    loadChildren:()=> import("./features/auth/auth.module").then(a=>a.AuthModule)
-  }
+    path: "reactivepattern",
+    loadChildren: () =>
+      import("./features/reactive-pattern/reactive-pattern.module").then(
+        (r) => r.ReactivePatternModule
+      ),
+  },
+  {
+    path: "ps",
+    loadChildren: () =>
+      import("./features/summary/summary.module").then((l) => l.SummaryModule),
+  },
+  // {
+  //   path: "ps",
+  //   loadChildren: () =>
+  //     import("./features/summary/summary.module").then((l) => l.SummaryModule),
+  // },
+  {
+    path: "auth",
+    loadChildren: () =>
+      import("./features/auth/auth.module").then((a) => a.AuthModule),
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule],
 })
 export class PortfolioRoutingModule {
   static components = [
     StockComponent,
-    EquityComponent,
-    EquityLongTermComponent,
-    EquityShortTermComponent,
-    EquityTermsComponent,
-    HottableDemoComponent
+    HottableDemoComponent,
   ];
 }

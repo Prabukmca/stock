@@ -1,4 +1,3 @@
-import { AppInitService } from "./app-config.service";
 
 // export function initializeApp(appInitService: AppInitService) {
 //     return (): Promise<any> => {
@@ -6,10 +5,25 @@ import { AppInitService } from "./app-config.service";
 //     };
 //   }
 
-export interface AppData {
-  config: AppConfig;
+export class AppData {
+  static config: AppConfig;
 }
 
 export interface AppConfig {
-  baseUrl: string;
+  app: {
+    baseUrl: string;
+    version: number;
+    releaseDate: Date;
+    title: string;
+    subTitle: string;
+    name : string,
+  };
+  env: {
+    name: string;
+    userPhotoPathPattern: string;
+  };
+  security: { serviceUrl: string };
+  commonServer: { serviceUrl: string };
+  coreServer: { serviceUrl: string };
+  logging: {};
 }

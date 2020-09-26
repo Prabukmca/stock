@@ -205,6 +205,18 @@
       "type": "layer type",
       "description": "desc",
       "id": 26
+    },
+    {
+      "name": "layer test",
+      "type": "layer type",
+      "description": "desc",
+      "id": 27
+    },
+    {
+      "name": "layer test",
+      "type": "layer type",
+      "description": "desc",
+      "id": 28
     }
   ],
   "typeLoads": [

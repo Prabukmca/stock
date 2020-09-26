@@ -12,4 +12,14 @@ export class PortfolioComponent implements OnInit {
   ngOnInit() {
   }
 
+  runWorker(){
+    const demoWorker = new Worker('../demo.worker',{type:'module'});
+
+    demoWorker.onmessage = (message) =>{
+      console.log(`Got message`, message.data);
+    }
+
+    demoWorker.postMessage('hey');
+  }
+
 }

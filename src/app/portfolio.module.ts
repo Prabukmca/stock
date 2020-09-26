@@ -9,7 +9,7 @@ import { HotTableModule } from "ng2-handsontable";
 
 import { PortfolioRoutingModule } from "./portfolio-routing.module";
 import { PortfolioComponent } from "./portfolio/portfolio.component";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { PortfolioReducer } from "./state/portfolio.reducer";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
@@ -22,16 +22,19 @@ import { environment } from "src/environments/environment";
 import { LacModule } from "./features/lac/lac.module";
 
 import { EffectsModule } from "@ngrx/effects";
-import {
-  AppInitService,
-  initializeApp
-} from "./app-services/app-config.service";
+import { initializeApp } from "./app-services/app-config.service";
 import { AutocompleteFilterComponent } from "./shared/components/autocomplete-filter/autocomplete-filter.component";
 import { HottableDemoComponent } from "./features/components/hottable-demo/hottable-demo.component";
-import { AdDirective } from './shared/directives/AdDirective/ad-directive.directive';
+import { AdDirective } from "./shared/directives/AdDirective/ad-directive.directive";
+import { LacContainerComponent } from "./features/reactive-pattern/container/lac-container/lac-container.component";
 
 @NgModule({
-  declarations: [PortfolioComponent, PortfolioRoutingModule.components, AdDirective],
+  declarations: [
+    PortfolioComponent,
+    PortfolioRoutingModule.components,
+    AdDirective,
+    LacContainerComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -46,25 +49,26 @@ import { AdDirective } from './shared/directives/AdDirective/ad-directive.direct
     HotTableModule,
     NgbModule,
     TabsModule.forRoot(),
-    LayerModule,
-    LacModule,
     StoreDevtoolsModule.instrument({
       name: "stock dev tools",
       maxAge: 25,
-      logOnly: environment.production
-    })
+      logOnly: environment.production,
+    }),
   ],
   exports: [MatTabsModule, NgbModule],
-  // providers: [
-  //   AppInitService,
-  //   {
-  //     provide: APP_INITIALIZER,
-  //     useFactory: initializeApp,
-  //     deps: [AppInitService],
-  //     multi: true
-  //   }
-  // ],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [HttpClient],
+      multi: true,
+    },
+    {
+      provide: "Stock_Security_Service",
+      useFactory: initializeSecurity,
+    },
+  ],
   entryComponents: [HottableDemoComponent],
-  bootstrap: [PortfolioComponent]
+  bootstrap: [PortfolioComponent],
 })
 export class PortfolioModule {}

@@ -5,7 +5,7 @@ import {
   FormArray,
   AbstractControl
 } from "@angular/forms";
-import { debounceTime } from "rxjs/operators";
+import { debounceTime, map } from "rxjs/operators";
 import { LacService } from "../../services/lac.service";
 import { LacFacade } from "../../facades/lac-facade";
 import { SourceModel, DestinationModel } from "../../models/lac-model";
@@ -97,6 +97,8 @@ export class LacLayerBlockComponent implements OnInit {
 
       this.lacFormArray.push(this.layerGroupControls);
 
+      this.lacFormArray.valueChanges.pipe(map(l=> console.log('test l', l)));
+      
       this.lacFormArray.valueChanges.subscribe(value =>
         this.onFormArrayValueChanged(value)
       );

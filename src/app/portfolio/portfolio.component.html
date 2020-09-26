@@ -1,6 +1,7 @@
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
   <div class="container-fluid">
-    <a href="#" class="navbar-brand mr-3">Tutorial Republic</a>
+    <a href="#" class="navbar-brand mr-3">Stock Eercise</a>
     <button
       type="button"
       class="navbar-toggler"
@@ -13,7 +14,7 @@
       <div class="navbar-nav">
         <a href="#" class="nav-item nav-link active">Home</a>
 
-        <div class="dropdown">
+        <div class="nav-item nav-link dropdown">
           <button class="dropbtn">Data Manager</button>
           <div class="dropdown-content">
             <a href="/datamanager">Explorer</a>
@@ -40,6 +41,18 @@
           routerLinkActive="router-link-active"
           >LAC</a
         >
+        <a
+          [routerLink]="['/reactivepattern']"
+          class="nav-item nav-link"
+          routerLinkActive="router-link-active"
+          >Reactive Pattern</a
+        >
+        <a
+          [routerLink]="['/ps/summary']"
+          class="nav-item nav-link"
+          routerLinkActive="router-link-active"
+          >Summary</a
+        >
       </div>
       <div class="navbar-nav ml-auto">
         <a href="#" class="nav-item nav-link">Register</a>
@@ -50,8 +63,10 @@
           class="nav-item nav-link"
           >Login</a
         >
-      </div>
+      </div>     
     </div>
   </div>
 </nav>
-<router-outlet></router-outlet>
+<router-outlet>
+  <!-- <button (click)="runWorker()">Run Worker</button> -->
+</router-outlet>

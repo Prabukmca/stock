@@ -12,8 +12,8 @@ import {
 import { AdDirective } from "src/app/shared/directives/AdDirective/ad-directive.directive";
 import { DataExplorerComponent } from "../data-explorer/data-explorer.component";
 import { DynamicComponentOneComponent } from "../components/dynamic-component-one/dynamic-component-one.component";
-import { DynamicComponentTwoComponent } from '../components/dynamic-component-two/dynamic-component-two.component';
-import { DynamicComponentThreeComponent } from '../components/dynamic-component-three/dynamic-component-three.component';
+import { DynamicComponentTwoComponent } from "../components/dynamic-component-two/dynamic-component-two.component";
+import { DynamicComponentThreeComponent } from "../components/dynamic-component-three/dynamic-component-three.component";
 
 @Component({
   selector: "smc-data-manager-details",
@@ -46,28 +46,19 @@ export class DataManagerDetailsComponent implements OnInit, AfterViewInit {
     this.loadChildComponent(DynamicComponentOneComponent, "Init message");
   }
 
-  loadChildComponent(componentType: Type<any>, message : string) {
+  loadChildComponent(componentType: Type<any>, message: string) {
     if (!this.insertionPoint) {
       return;
     }
 
-    // let viewContainerRef = this.insertionPoint.viewContainerRef;
-    // viewContainerRef.clear();
-
-    setTimeout(() => {
-      let vcr = this.insertionPoint;
-      vcr.clear();
-      let componentFactory = this.cfr.resolveComponentFactory(
-        componentType
-      );
-      if (this.ref1) {
-        this.ref1.destroy();
-      }
-      this.componentRef = vcr.createComponent(componentFactory);
-      setTimeout(() => {
-        this.componentRef.instance.message = message;
-      }, 100);
-    }, 100);
+    let vcr = this.insertionPoint;
+    vcr.clear();
+    let componentFactory = this.cfr.resolveComponentFactory(componentType);
+    if (this.ref1) {
+      this.ref1.destroy();
+    }
+    this.componentRef = vcr.createComponent(componentFactory);
+    this.componentRef.instance.message = message;
   }
 
   ngOnDestroy() {
@@ -77,12 +68,21 @@ export class DataManagerDetailsComponent implements OnInit, AfterViewInit {
   }
 
   componentOneClick() {
-    this.loadChildComponent(DynamicComponentOneComponent, "first component test");
+    this.loadChildComponent(
+      DynamicComponentOneComponent,
+      "first component test"
+    );
   }
   componentTwoClick() {
-    this.loadChildComponent(DynamicComponentTwoComponent, "second component test");
+    this.loadChildComponent(
+      DynamicComponentTwoComponent,
+      "second component test"
+    );
   }
   componentThreeClick() {
-    this.loadChildComponent(DynamicComponentThreeComponent, "three component test");
+    this.loadChildComponent(
+      DynamicComponentThreeComponent,
+      "three component test"
+    );
   }
 }

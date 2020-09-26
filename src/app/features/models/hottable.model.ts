@@ -4,6 +4,12 @@ export interface HottableModel {
   address: string;
 }
 
+export interface GridModel {
+  id: number,
+  title : string,
+  author: string
+}
+
 export const flagRenderer = function(
   instance,
   td,
