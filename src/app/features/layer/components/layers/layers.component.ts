@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
-import { Layer } from "../../models/layer.model";
+import { Layer } from 'src/app/state/portfolio.state';
 
 @Component({
   selector: "smc-layers",

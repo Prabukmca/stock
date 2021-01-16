@@ -1,34 +1,22 @@
 import { Injectable } from "@angular/core";
-import { Actions, ofType, Effect } from "@ngrx/effects";
+import { Actions, ofType, createEffect } from "@ngrx/effects";
 import { LayerService } from "../services/layer.service";
-import * as layerActions from "../state/layer.actions";
-import { mergeMap, map, catchError, tap } from "rxjs/operators";
-import { Layer } from "../models/layer.model";
-import { of } from "rxjs";
+import { catchError, map, switchMap, tap } from "rxjs/operators";
+import { Store } from '@ngrx/store';
+import { loadLayer, loadLayerFailure, loadLayerSuccess } from './layer.actions';
+import { layersState, LayerState } from 'src/app/state/portfolio.state';
+import { EMPTY } from 'rxjs/internal/observable/empty';
+import { of } from 'rxjs/internal/observable/of';
 @Injectable()
 export class LayerEffects {
-  constructor(private actions$: Actions, private layerService: LayerService) {}
+  constructor(
+    private actions$: Actions,
+    private layerService: LayerService) { }
 
-  @Effect()
-  loadLayers$ = this.actions$.pipe(
-    ofType(layerActions.LayerActionTypes.Load),
-    mergeMap((action: layerActions.Load) =>
-      this.layerService
-        .getLayers()
-        .pipe(map((layers: Layer[]) => new layerActions.LoadSuccess(layers)))
-    ),
-    catchError(err => of(new layerActions.LoadFail(err)))
-  );
-
-  @Effect()
-  addLayer$ = this.actions$.pipe(
-    ofType(layerActions.LayerActionTypes.AddLayer),
-    map((action: layerActions.AddLayerAction) => action.payload),
-    mergeMap((layer: Layer) =>
-      this.layerService.addLayer(layer).pipe(
-        map(newLayer => new layerActions.AddLayerSuccess(newLayer)),
-        catchError(err => of(new layerActions.AddLayerFail(err)))
-      )
-    )
-  );
+  loadLayers = createEffect(() => this.actions$.pipe(ofType(loadLayer),
+    tap(() => {
+      this.layerService.getLayers().pipe(map(layers => loadLayerSuccess({ layers })),
+        catchError(error => of(loadLayerFailure({ error }))))
+    }))
+    , { dispatch: false });
 }

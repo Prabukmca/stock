@@ -1,21 +1,40 @@
 const Joi = require("joi");
 const express = require("express");
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+app.use(bodyParser.json({ limit: '5mb' }));
+app.use(bodyParser.urlencoded({ extended: true }));
 const app = express();
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://Prabu:<mongo@123>@stock.0wpxc.mongodb.net/<interviewportal>?retryWrites=true&w=majority').then(()=>console.log('mongodb connected...' ))
-.catch(err => console.log('Mongodb not connected...', err));
+// mongoose.connect('mongodb+srv://Prabu:<mongo@123>@stock.0wpxc.mongodb.net/<interviewportal>?retryWrites=true&w=majority').then(()=>console.log('mongodb connected...' ))
+// .catch(err => console.log('Mongodb not connected...', err));
+
+const db = mongoose.connect('mongodb://localhost:27017/stockdb', function (err, response) {
+  if (err) {
+    console.log('Error Occurred While Connecting Mongo DB', err);
+  } else {
+    console.log(`Mongodb connected to ${db} - ${response}`);
+  }
+
+});
+
+app.use(function(req, res, next){
+  res.setHeader('Access-Control-Allow-Origin','http://localhost:4200');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
+  res.setHeader('Access-Control-Allow-Headers','X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+})
 
 const courseSchema = new mongoose.Schema({
- category
+  category
 });
 
 const Course = mongoose.model('Course', courseSchema);
 const course = new Course({
   name: 'test course',
-  author : 'autor',
-  tags:['one','two'],
+  author: 'autor',
+  tags: ['one', 'two'],
   isPublished: true
 });
 
@@ -67,11 +86,11 @@ app.post("/api/courses", (req, res) => {
 app.put("/api/courses/:id", (req, res) => {
   const course = courses.find((c) => c.id === parseInt(req.params.id));
   if (!course) {
-   return res.status(404).send("The course with the given id not found");
+    return res.status(404).send("The course with the given id not found");
   }
   const { error } = validateCourse(req.body);
   if (error) {
-   return res.status(400).send(error.details[0].message);
+    return res.status(400).send(error.details[0].message);
   }
   course.name = req.body.name;
   res.send(course);

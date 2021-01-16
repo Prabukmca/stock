@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { tap } from "rxjs/operators";
-import { Layer } from '../models/layer.model';
+import { Layer } from 'src/app/state/portfolio.state';
 
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -17,9 +17,11 @@ export class LayerService {
   constructor(private httpClient: HttpClient) {}
 
   getLayers(): Observable<Layer[]> {
+    // return this.httpClient
+    //   .get<Layer[]>(`${this.baseUrl}/layers`)
+    //   .pipe(tap(data => console.log('in service data ', JSON.stringify(data))));
     return this.httpClient
-      .get<Layer[]>(`${this.baseUrl}/layers`)
-      .pipe(tap(data => console.log('in service data ', JSON.stringify(data))));
+      .get<Layer[]>(`${this.baseUrl}/layers`);
   }
 
   getLayerById(id: number): Observable<Layer> {

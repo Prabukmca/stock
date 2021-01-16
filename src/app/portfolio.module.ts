@@ -22,7 +22,7 @@ import { environment } from "src/environments/environment";
 import { LacModule } from "./features/lac/lac.module";
 
 import { EffectsModule } from "@ngrx/effects";
-import { initializeApp } from "./app-services/app-config.service";
+import { initializeApp, initializeSecurity } from "./app-services/app-config.service";
 import { AutocompleteFilterComponent } from "./shared/components/autocomplete-filter/autocomplete-filter.component";
 import { HottableDemoComponent } from "./features/components/hottable-demo/hottable-demo.component";
 import { AdDirective } from "./shared/directives/AdDirective/ad-directive.directive";

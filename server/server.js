@@ -4,6 +4,7 @@ const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
+// server.use(jsonServer.bodyParser);
 server.use(router);
 server.listen(3000,()=>{
     console.log('Json Server listening at ', 3000);

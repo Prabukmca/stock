@@ -5,11 +5,12 @@ import {
   ChangeDetectionStrategy
 } from "@angular/core";
 import { Store, select } from "@ngrx/store";
-import { Layer } from "../../models/layer.model";
 import { LayerService } from "../../services/layer.service";
 import * as fromLayer from "../../state/layer.reducer";
 import * as LayerActions from "../../state/layer.actions";
 import { Observable } from "rxjs";
+import { Layer, State } from 'src/app/state/portfolio.state';
+import { selectLayers } from '../../state/layer.selector';
 
 @Component({
   selector: "smc-layers-container",
@@ -19,26 +20,23 @@ import { Observable } from "rxjs";
 })
 export class LayersContainerComponent implements OnInit {
   title = "Default title";
-  layers$: Observable<Layer[]>;
-  deletedLayers$: Observable<Layer[]>;
-  layer: Layer;
   searchLayerId: number;
-
-  @Input() value: boolean;
-  layers: Layer[];
+  layers$ = this.store.pipe(select(selectLayers));
 
   constructor(
-    private store: Store<fromLayer.LayerState>,
-    private layerService: LayerService
-  ) {}
+    private store: Store<State>,
+    private service: LayerService
+  ) { }
 
   ngOnInit() {
-    this.store.dispatch(new LayerActions.Load());
-    this.layers$ = this.store.pipe(select(fromLayer.getLayersState));
+    this.store.dispatch(LayerActions.loadLayer());
+    this.layers$.subscribe(data => {
+      console.log('layers data', data);
+    });
+    // this.service.getLayers().subscribe(data => {
+    //   console.log('test get layers', data);
 
-    this.deletedLayers$ = this.store.pipe(
-      select(fromLayer.getDeletedLayersState)
-    );
+    // })
   }
 
   eventHandled($event) {
@@ -48,10 +46,8 @@ export class LayersContainerComponent implements OnInit {
       layer.type = "layer type";
       layer.description = "desc";
 
-      this.store.dispatch(new LayerActions.AddLayerAction(layer));
     }
     if ($event.type === "DELETE_LAYER") {
-      this.store.dispatch(new LayerActions.DeleteLayerAction($event.data));
     }
   }
 }

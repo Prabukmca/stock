@@ -43,7 +43,7 @@ export function initializeApp(http: HttpClient) {
 
 export function initializeSecurity(){
   return {
-    getUserDataApi: '/api/login';
+    getUserDataApi: '/api/login'
   }
 }
 
