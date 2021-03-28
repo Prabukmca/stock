@@ -26,7 +26,7 @@ export class DataManagerDetailsComponent implements OnInit, AfterViewInit {
 
   // @ViewChild(AdDirective, { read: ViewContainerRef, static: false })  insertionPoint: AdDirective;
 
-  @ViewChild("insertionPoint", { read: ViewContainerRef, static: false })
+  @ViewChild("insertionPoint", { read: ViewContainerRef })
   insertionPoint: ViewContainerRef;
   componentRef: ComponentRef<DynamicComponentOneComponent>;
   ref1: ComponentRef<DynamicComponentOneComponent>;

@@ -34,10 +34,10 @@ export class DataExplorerComponent implements OnInit {
   }
 
   disableSwitching: boolean;
-  @ViewChild("tabset", { static: false }) tabsetEl: ElementRef;
-  @ViewChild("tabset", { static: false }) tabset: TabsetComponent;
-  @ViewChild("first", { static: false }) first: TabDirective;
-  @ViewChild("second", { static: false }) second: TabDirective;
+  @ViewChild("tabset") tabsetEl: ElementRef;
+  @ViewChild("tabset") tabset: TabsetComponent;
+  @ViewChild("first") first: TabDirective;
+  @ViewChild("second") second: TabDirective;
 
   confirmTabSwitch($event) {
     if (this.disableSwitching) {

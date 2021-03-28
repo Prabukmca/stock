@@ -68,7 +68,6 @@ import { LacContainerComponent } from "./features/reactive-pattern/container/lac
       useFactory: initializeSecurity,
     },
   ],
-  entryComponents: [HottableDemoComponent],
   bootstrap: [PortfolioComponent],
 })
 export class PortfolioModule {}

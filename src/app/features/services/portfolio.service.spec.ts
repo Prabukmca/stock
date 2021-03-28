@@ -6,7 +6,7 @@ describe('PortfolioService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   xit('should be created', () => {
-    const service: PortfolioService = TestBed.get(PortfolioService);
+    const service: PortfolioService = TestBed.inject(PortfolioService);
     expect(service).toBeTruthy();
   });
 });

@@ -6,7 +6,7 @@ xdescribe('DataManagerService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   xit('should be created', () => {
-    const service: DataManagerService = TestBed.get(DataManagerService);
+    const service: DataManagerService = TestBed.inject(DataManagerService);
     expect(service).toBeTruthy();
   });
 });

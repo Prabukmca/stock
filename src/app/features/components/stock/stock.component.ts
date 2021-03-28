@@ -9,7 +9,7 @@ import { map } from "rxjs/operators";
 })
 export class StockComponent implements OnInit {
   isChildDeleted: boolean;
-  constructor(private portfolioService: PortfolioService) {}
+  constructor(private portfolioService: PortfolioService) { }
 
   ngOnInit() {
     console.log("stock init");
@@ -24,5 +24,34 @@ export class StockComponent implements OnInit {
       .subscribe((data) => console.log("Subscribed Tax", data));
 
     tax$.subscribe((tax) => console.log("tax changed", tax));
+    
+    this.test4().then(data=>{});
+    this.test5();
+    this.test1();
+    this.test2();
+    this.test3();
+
+  }
+  async test1() {
+    await this.update(10000);
+  }
+  async test2() {
+    await this.update(20000);
+  }
+  async test3() {
+    await this.update(30000);
+  }
+  async test4() {
+    await this.update(40000);
+  }
+  async test5() {
+    await this.update(50000);
+  }
+  async update(from: number) {
+    // setTimeout(() => {
+    //   console.log(from);
+    // }, from);
+    console.log(from);
+
   }
 }

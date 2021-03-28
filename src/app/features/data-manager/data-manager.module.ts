@@ -16,6 +16,5 @@ import { DynamicComponentThreeComponent } from './components/dynamic-component-t
   declarations: [DataManagerRoutingModule.components, DynamicComponentOneComponent, DynamicComponentTwoComponent, DynamicComponentThreeComponent],
   imports: [CommonModule, DataManagerRoutingModule, MatTabsModule, FormsModule,
     StoreModule.forFeature('dataManagers',reducer), TabsModule.forRoot()],
-    entryComponents:[DynamicComponentOneComponent, DynamicComponentTwoComponent, DynamicComponentThreeComponent]
 })
 export class DataManagerModule {}
