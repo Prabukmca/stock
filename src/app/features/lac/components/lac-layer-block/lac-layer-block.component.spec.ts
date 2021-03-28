@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LacLayerBlockComponent } from './lac-layer-block.component';
 
@@ -6,7 +6,7 @@ describe('LacLayerBlockComponent', () => {
   let component: LacLayerBlockComponent;
   let fixture: ComponentFixture<LacLayerBlockComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LacLayerBlockComponent ]
     })

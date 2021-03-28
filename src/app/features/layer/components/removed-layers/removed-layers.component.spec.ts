@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { RemovedLayersComponent } from './removed-layers.component';
 
@@ -6,7 +6,7 @@ describe('RemovedLayersComponent', () => {
   let component: RemovedLayersComponent;
   let fixture: ComponentFixture<RemovedLayersComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RemovedLayersComponent ]
     })

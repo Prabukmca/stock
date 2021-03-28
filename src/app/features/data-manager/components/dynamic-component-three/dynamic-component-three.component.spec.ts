@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DynamicComponentThreeComponent } from './dynamic-component-three.component';
 
@@ -6,7 +6,7 @@ describe('DynamicComponentThreeComponent', () => {
   let component: DynamicComponentThreeComponent;
   let fixture: ComponentFixture<DynamicComponentThreeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DynamicComponentThreeComponent ]
     })
