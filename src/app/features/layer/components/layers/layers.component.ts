@@ -7,6 +7,7 @@ import { Layer } from 'src/app/state/portfolio.state';
   styleUrls: ["./layers.component.scss"]
 })
 export class LayersComponent implements OnInit {
+  searchLayerId: number;
   @Input() layers: Layer[];
 
   @Output() eventHandled = new EventEmitter<any>();
@@ -21,5 +22,8 @@ export class LayersComponent implements OnInit {
 
   delete($event) {
     this.eventHandled.emit({ type: "DELETE_LAYER", data: $event });
+  }
+  getLayer(){
+    
   }
 }

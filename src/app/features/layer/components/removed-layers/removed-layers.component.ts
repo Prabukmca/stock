@@ -17,4 +17,7 @@ export class RemovedLayersComponent implements OnInit {
   ngOnInit() {
     
   }
+  restore(layer : any){
+
+  }
 }

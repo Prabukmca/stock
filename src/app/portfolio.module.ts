@@ -26,14 +26,12 @@ import { initializeApp, initializeSecurity } from "./app-services/app-config.ser
 import { AutocompleteFilterComponent } from "./shared/components/autocomplete-filter/autocomplete-filter.component";
 import { HottableDemoComponent } from "./features/components/hottable-demo/hottable-demo.component";
 import { AdDirective } from "./shared/directives/AdDirective/ad-directive.directive";
-import { LacContainerComponent } from "./features/reactive-pattern/container/lac-container/lac-container.component";
 
 @NgModule({
   declarations: [
     PortfolioComponent,
     PortfolioRoutingModule.components,
     AdDirective,
-    LacContainerComponent,
   ],
   imports: [
     BrowserModule,

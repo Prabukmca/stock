@@ -62,7 +62,7 @@ export class HottableDemoComponent  {
     contextMenu: ["row_above", "row_below", "remove_row"]
   };
 
-   afterChange(e: any, table) {
+   afterChange(e: any) {
     
     // this.sub_product_data.push(table.data);
   }

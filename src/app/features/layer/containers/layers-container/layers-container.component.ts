@@ -22,7 +22,7 @@ export class LayersContainerComponent implements OnInit {
   title = "Default title";
   searchLayerId: number;
   layers$ = this.store.pipe(select(selectLayers));
-
+  deletedLayers$ : Observable<any>;
   constructor(
     private store: Store<State>,
     private service: LayerService

@@ -1,0 +1,16 @@
+{
+    "app": {
+        "name": "stock 1.0",
+        "version": 1.0,
+        "title": "title",
+        "releaseDate": "2020-04-04",
+        "subTitle": "subtitle",
+        "baseUrl": ""
+    },
+    "env": {
+        "name": "stock 1.0"
+    },
+    "commonServer": {
+        "serviceUrl": "http://localhost:3000"
+    }
+}
