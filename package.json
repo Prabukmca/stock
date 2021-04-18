@@ -26,6 +26,7 @@
     "@ngrx/effects": "^8.6.0",
     "@ngrx/entity": "^10.0.1",
     "@ngrx/store-devtools": "^8.6.0",
+    "apollo-angular": "^2.4.0",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "bootstrap": "4.1.1",
@@ -38,7 +39,9 @@
     "rxjs-compat": "^6.5.4",
     "stock-security": "file:common_libraries/stock-security-0.0.1.tgz",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "@apollo/client": "^3.0.0",
+    "graphql": "^15.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.6",

@@ -26,6 +26,7 @@ import { initializeApp, initializeSecurity } from "./app-services/app-config.ser
 import { AutocompleteFilterComponent } from "./shared/components/autocomplete-filter/autocomplete-filter.component";
 import { HottableDemoComponent } from "./features/components/hottable-demo/hottable-demo.component";
 import { AdDirective } from "./shared/directives/AdDirective/ad-directive.directive";
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { AdDirective } from "./shared/directives/AdDirective/ad-directive.direct
       maxAge: 25,
       logOnly: environment.production,
     }),
+    GraphQLModule,
   ],
   exports: [MatTabsModule, NgbModule],
   providers: [
