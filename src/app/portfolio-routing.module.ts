@@ -4,7 +4,8 @@ import { StockComponent } from "./features/components/stock/stock.component";
 import { HottableDemoComponent } from "./features/components/hottable-demo/hottable-demo.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "/stock", pathMatch: "full" },
+  { path: "", redirectTo: "/blogs", pathMatch: "full" },
+  { path: "blogs", loadChildren: () => import('./features/blogs/blogs.module').then(m => m.BlogsModule) },
   { path: "stock", component: StockComponent },
   {
     path: "datamanager",

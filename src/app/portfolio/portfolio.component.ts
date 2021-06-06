@@ -37,7 +37,7 @@ export class PortfolioComponent implements OnInit {
       .query<any>({
         query: gql`
           {
-            books {
+            users {
               name
             }
           }

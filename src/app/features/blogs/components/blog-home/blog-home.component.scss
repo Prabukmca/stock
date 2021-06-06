@@ -1,0 +1,28 @@
+.blogger {
+    background: linear-gradient(lightblue, white);
+    height: 100%;
+    width: 100%;
+
+    .blog-header {
+        height: 120px;
+        display: flex;
+        .blog-icon {
+            padding: 10px;
+            
+        }
+        .blog-menu {
+            width:600px;
+        }
+        button {
+            color: white;
+            border-radius: 100em;
+            height: 30px;
+            width: 100px;
+            background-color: blue;
+        }
+    }
+    .login {
+        float: right;
+        padding: 0 10px;
+    }
+}
