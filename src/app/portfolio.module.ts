@@ -27,12 +27,14 @@ import { AutocompleteFilterComponent } from "./shared/components/autocomplete-fi
 import { HottableDemoComponent } from "./features/components/hottable-demo/hottable-demo.component";
 import { AdDirective } from "./shared/directives/AdDirective/ad-directive.directive";
 import { GraphQLModule } from './graphql.module';
+import { SideNavBarComponent } from './portfolio/components/side-nav-bar/side-nav-bar.component';
 
 @NgModule({
   declarations: [
     PortfolioComponent,
     PortfolioRoutingModule.components,
     AdDirective,
+    SideNavBarComponent,
   ],
   imports: [
     BrowserModule,
